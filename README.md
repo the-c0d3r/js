@@ -21,5 +21,5 @@ OR
 
 : `js file`
 
-Both are the same as calling `js file.java`. This feature has been implemented since the bash shell will only autocomplete the filename with a dot (.) if there are multiple files. Lazziness is a virtue for the programmer. 
+Both are the same as calling `js file.java`. This feature has been implemented since the bash shell will only autocomplete the filename with a dot (.) if there are multiple files. Laziness is a virtue for the programmer. 
     
