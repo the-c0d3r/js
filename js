@@ -61,7 +61,6 @@ def recompile(flist):
 def execute(file):
     """file needs to be the java class file to execute"""
     print"[+] Executing ... \n========================================"
-    print file
     os.system("java %s" % file)
 
 
