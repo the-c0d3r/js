@@ -23,7 +23,7 @@ def js(argument=None):
         compileArg = argument
         if compileArg.endswith('.'):
             compileArg = compileArg + 'java'
-        elif not comileArg.endswith('java'):
+        elif not compileArg.endswith('java'):
             compileArg = compileArg + '.java'     
     
         recompile(compileArg)
