@@ -4,10 +4,10 @@ import os
 
 def js(argument=None):
     os.chdir(os.path.abspath('.'))
-    FileList = os.listdir('.')
+    FileList = [i for i in os.listdir('.') if '.' in i]
     if not argument:
         delclass(FileList)
-        recompile(os.listdir('.'))
+        recompile([i for i in os.listdir('.') if '.' in i])
         print"[+] Class removed and recompiled"
 
     elif argument:
