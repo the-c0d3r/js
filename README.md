@@ -1,4 +1,9 @@
 # js
+
+- Mass Java source file compiler
+- Removes the compiled `.class` file and compiles again
+- If the file argument is provided, existing `.class` file will be removed and compile the .java file and run it.
+
 Usage
     
 `js (file)`
