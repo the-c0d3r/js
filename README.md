@@ -4,7 +4,12 @@
 - Removes the compiled `.class` file and compiles again
 - If the file argument is provided, existing `.class` file will be removed and compile the .java file and run it.
 
-Usage
+**Warning : Be careful when calling just `js`, because it WILL delete all compiled java file** (A feature, not a bug)
+
+If you don't want your all your compiled java file removed, then you should call it with filename.
+
+
+##Usage
     
 `js (file)`
    ----
