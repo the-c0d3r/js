@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import os
 
 
@@ -8,7 +8,7 @@ def js(argument=None):
     if not argument:
         delclass(FileList)
         recompile([i for i in os.listdir('.') if '.' in i])
-        print"[+] Class removed and recompiled"
+        print("[+] Class removed and recompiled")
 
     elif argument:
         delArg = argument
@@ -37,30 +37,31 @@ def js(argument=None):
 
 def delclass(flist):
     if isinstance(flist,list):
+    # to check if it is a list or a single file
         for i in flist:
             if i.endswith('.class'):
-                print "[+] %s removed" % i
+                print("[+] %s removed" % i)
                 os.remove(i)
     else:
         for i in os.listdir('.'):
             if i.startswith(flist[:flist.index('.')]) and i.endswith('.class'):
                 os.remove(i)
-                print "[+] class found and removed"
+                print("[+] class found and removed")
 
 def recompile(flist):
     
     if isinstance(flist,list): # If the flist is a list
         for i in flist:
             os.system('javac %s' % i)
-            print"[+] Compiled %s" % i
+            print("[+] Compiled %s" % i)
     else: # If flist is just a variable
         os.system('javac %s' % flist)
-        print"[+] Compiled %s" % flist
+        print("[+] Compiled %s" % flist)
 
 
 def execute(file):
     """file needs to be the java class file to execute"""
-    print"[+] Executing ... \n========================================"
+    print("[+] Executing ... \n========================================")
     os.system("java %s" % file)
 
 
@@ -68,7 +69,7 @@ if __name__ == "__main__":
     import sys
     try:
         if '-h' in sys.argv:
-            print """
+            print("""
 Usage
     
     js (file)
@@ -82,10 +83,10 @@ Usage
     : js file.java 
     
        If called WITH file argument, it will remove the respective compiled .class file, recompile the file argument and execute it.
-    """
+    """)
         elif len(sys.argv) == 2:
             js(sys.argv[1])
         else:
             js()
     except KeyboardInterrupt:
-        print"[!] Terminating"
+        print("[!] Terminating")
