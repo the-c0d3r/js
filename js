@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 import os
-
+import subprocess
 
 def js(argument=None):
     os.chdir(os.path.abspath('.'))
-    FileList = [i for i in os.listdir('.') if '.' in i]
+    FileList = [i for i in os.listdir('.') if '.java' in i]
     if not argument:
         delclass(FileList)
-        recompile([i for i in os.listdir('.') if '.' in i])
+        recompile([i for i in os.listdir('.') if '.java' in i])
         print("[+] Class removed and recompiled")
 
     elif argument:
@@ -52,12 +52,32 @@ def recompile(flist):
     
     if isinstance(flist,list): # If the flist is a list
         for i in flist:
-            os.system('javac %s' % i)
-            print("[+] Compiled %s" % i)
+            p = subprocess.Popen(["javac",i],stderr=subprocess.PIPE)
+            error = p.communicate()
+            # uses the subprocess to call the system commands
+            if len(error[1]) == 0:
+            # os.system('javac %s' % i)
+                print("[+] Compiled %s" % i)
+            else:
+                print("[!] Error At %s" % i)
+                print("===================")
+                print(error[1].decode('utf-8'))
+                # Error[1] needs to be decoded with utf8 
+                # since it is a byte 'literal' string object
+                print("===================")
+                
     else: # If flist is just a variable
-        os.system('javac %s' % flist)
-        print("[+] Compiled %s" % flist)
-
+        p = subprocess.Popen(["javac", flist], stderr=subprocess.PIPE)
+        error = p.communicate()
+        if len(error[1]) == 0:
+        # os.system('javac %s' % flist)
+            print("[+] Compiled %s" % flist)
+        else:
+            print("[!] Error At %s" % flist)
+            print("===================")
+            print(error[1].decode('utf-8'))
+            print("===================")
+            exit()
 
 def execute(file):
     """file needs to be the java class file to execute"""
