@@ -8,6 +8,11 @@
 
 If you don't want your all your compiled java file removed, then you should call it with filename.
 
+##Optional
+
+To make it accessible system wide, you can symlink the file `js` to the system path. 
+
+`ln -s /path/to/js /usr/local/bin/js`
 
 ##Usage
     
