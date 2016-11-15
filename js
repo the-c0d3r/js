@@ -16,7 +16,7 @@ def js(argument=None):
             delArg = delArg + 'class'
         elif not delArg.endswith('.class'):
             delArg = delArg + '.class'
-        
+
         delclass(delArg)
 
 
@@ -24,8 +24,8 @@ def js(argument=None):
         if compileArg.endswith('.'):
             compileArg = compileArg + 'java'
         elif not compileArg.endswith('java'):
-            compileArg = compileArg + '.java'     
-    
+            compileArg = compileArg + '.java'
+
         recompile(compileArg)
 
         executeArg = argument
@@ -49,7 +49,7 @@ def delclass(flist):
                 print("[+] class found and removed")
 
 def recompile(flist):
-    
+
     if isinstance(flist,list): # If the flist is a list
         for i in flist:
             p = subprocess.Popen(["javac",i],stderr=subprocess.PIPE)
@@ -65,7 +65,7 @@ def recompile(flist):
                 # Error[1] needs to be decoded with utf8 
                 # since it is a byte 'literal' string object
                 print("===================")
-                
+
     else: # If flist is just a variable
         p = subprocess.Popen(["javac", flist], stderr=subprocess.PIPE)
         error = p.communicate()
@@ -91,17 +91,17 @@ if __name__ == "__main__":
         if '-h' in sys.argv:
             print("""
 Usage
-    
+
     js (file)
         ----
         Optional
 
-    : js 
-       
+    : js
+
        If called WITHOUT file argument will remove all .class and recompile every java file inside the current directory
 
-    : js file.java 
-    
+    : js file.java
+
        If called WITH file argument, it will remove the respective compiled .class file, recompile the file argument and execute it.
     """)
         elif len(sys.argv) == 2:
