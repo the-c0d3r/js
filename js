@@ -49,7 +49,6 @@ def delclass(flist):
                 print("[+] class found and removed")
 
 def recompile(flist):
-
     if isinstance(flist,list): # If the flist is a list
         for i in flist:
             p = subprocess.Popen(["javac",i],stderr=subprocess.PIPE)
